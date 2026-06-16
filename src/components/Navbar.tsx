@@ -106,16 +106,16 @@ const Navbar: React.FC = () => {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 50,
-        padding: isScrolled ? '12px 0' : '20px 0',
-        background: isScrolled ? 'rgba(11, 13, 18, 0.8)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(8px)' : 'none',
-        WebkitBackdropFilter: isScrolled ? 'blur(8px)' : 'none',
-        borderBottom: isScrolled ? '1px solid var(--border-color)' : '1px solid transparent',
-        transition: 'var(--transition-subtle)',
+        zIndex: 1000,
+        padding: isScrolled || isMenuOpen ? '12px 0' : '20px 0',
+        background: isScrolled || isMenuOpen ? 'var(--bg-color)' : 'transparent',
+        backdropFilter: isScrolled || isMenuOpen ? 'blur(8px)' : 'none',
+        WebkitBackdropFilter: isScrolled || isMenuOpen ? 'blur(8px)' : 'none',
+        borderBottom: isScrolled || isMenuOpen ? '1px solid var(--border-color)' : '1px solid transparent',
+        transition: 'var(--transition-smooth)',
       }}
     >
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 1001 }}>
         <a
           href="#hero"
           onClick={(e) => handleNavClick(e, '#hero')}
@@ -212,16 +212,15 @@ const Navbar: React.FC = () => {
         <div
           style={{
             position: 'fixed',
-            top: '57px',
+            top: 0,
             left: 0,
             right: 0,
             bottom: 0,
             background: 'var(--bg-color)',
-            borderTop: '1px solid var(--border-color)',
-            zIndex: 49,
+            zIndex: 1000,
             display: 'flex',
             flexDirection: 'column',
-            padding: '32px 24px',
+            padding: '80px 24px 32px 24px',
             gap: '24px',
           }}
         >
