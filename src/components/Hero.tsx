@@ -30,10 +30,12 @@ const Hero: React.FC = () => {
   ];
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [activeTagIndex, setActiveTagIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      setActiveTagIndex((prev) => (prev + 1) % 3);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -152,13 +154,13 @@ const Hero: React.FC = () => {
               color: 'var(--text-secondary)'
             }}
           >
-            <span style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', padding: '6px 12px', borderRadius: '4px' }}>
+            <span className={`animated-tag ${activeTagIndex === 0 ? 'active' : ''}`}>
               Software Engineer
             </span>
-            <span style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', padding: '6px 12px', borderRadius: '4px' }}>
+            <span className={`animated-tag ${activeTagIndex === 1 ? 'active' : ''}`}>
               4+ Years Experience
             </span>
-            <span style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', padding: '6px 12px', borderRadius: '4px' }}>
+            <span className={`animated-tag ${activeTagIndex === 2 ? 'active' : ''}`}>
               AWS & Azure Certified
             </span>
           </motion.div>
