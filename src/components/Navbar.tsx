@@ -244,7 +244,7 @@ const Navbar: React.FC = () => {
                       padding: '6px 0',
                     }}
                   >
-                    {React.cloneElement(item.icon as React.ReactElement, { size: 16 })}
+                    {React.cloneElement(item.icon as any, { size: 16 })}
                     {item.label}
                   </a>
                 </li>
